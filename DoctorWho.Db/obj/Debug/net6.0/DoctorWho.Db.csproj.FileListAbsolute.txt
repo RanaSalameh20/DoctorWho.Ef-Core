@@ -1,0 +1,14 @@
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\DoctorWho.Db.csproj.AssemblyReference.cache
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\DoctorWho.Db.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\DoctorWho.Db.AssemblyInfoInputs.cache
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\DoctorWho.Db.AssemblyInfo.cs
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\DoctorWho.Db.csproj.CoreCompileInputs.cache
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\bin\Debug\net6.0\DoctorWho.Db.deps.json
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\bin\Debug\net6.0\DoctorWho.Db.runtimeconfig.json
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\bin\Debug\net6.0\DoctorWho.Db.dll
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\bin\Debug\net6.0\DoctorWho.Db.pdb
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\DoctorWho.Db.dll
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\refint\DoctorWho.Db.dll
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\DoctorWho.Db.pdb
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\DoctorWho.Db.genruntimeconfig.cache
+C:\Users\ranav\source\repos\DoctorWho\DoctorWho.Db\obj\Debug\net6.0\ref\DoctorWho.Db.dll
