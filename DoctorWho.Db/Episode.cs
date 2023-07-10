@@ -10,7 +10,6 @@ namespace DoctorWho.Db
     {
         public Episode()
         {
-            //Doctor = new Doctor();
             Enemies = new List<Enemy>();
             Companions = new List<Companion>();
         }
@@ -25,11 +24,8 @@ namespace DoctorWho.Db
         public Author Author { get; set; }
         public int? DoctorId { get; set; }
         public Doctor? Doctor { get; set; }
-
         public ICollection<Enemy> Enemies { get; set; }
         public ICollection<Companion>? Companions { get; set; }
-
-
 
     }
 }

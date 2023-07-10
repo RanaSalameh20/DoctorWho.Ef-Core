@@ -13,7 +13,7 @@ namespace DoctorWho.Db
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Companion> Companions { get; set; }
         public DbSet<Episode> Episodes { get; set; }
-     
+        public DbSet<FrequerntCompinaion> FrequerntCompinaions { get; set; }
 
         // Configuring
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,6 +27,7 @@ namespace DoctorWho.Db
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Enemy>().HasData(
                 new Enemy { EnemyId = 1, EnemyName = "Sawsan", Description = "Red Enemy" },
                 new Enemy { EnemyId = 2, EnemyName = "Firas", Description = "Green Enemy" },
@@ -68,7 +69,6 @@ namespace DoctorWho.Db
                 new Episode { EpisodeId = 6, SeriesNumber = 7, EpisodeNumber = 12, EpisodeType = "NotRegular", Title = "TestNullDoctor", EpisodeDate = new DateTime(2015, 3, 26), AuthorId = 1, DoctorId = null, Notes = null }
             );
 
-           
         }
 
     }
