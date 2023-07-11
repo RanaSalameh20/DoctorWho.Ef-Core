@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoctorWho.Db.ViewsModels
 {
-        public class ViewEpisode
+        public class EpisodeView
         {
             public int EpisodeId { get; set; }
             public int SeriesNumber { get; set; }
