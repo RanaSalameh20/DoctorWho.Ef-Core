@@ -11,10 +11,8 @@ namespace DoctorWho.Db
 {
     [Keyless]
     public class FrequerntCompinaion
-    {
-       
+    {   
         public string CompanionName { get; set; }
-
 
         [Column("CompanionAppearances")]
         public int Frequency { get; set;}

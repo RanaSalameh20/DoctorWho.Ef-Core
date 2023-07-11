@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using System.Numerics;
 using System;
+using DoctorWho.Db.ProceduresModels;
+using System.Reflection;
 
 namespace DoctorWho.Db
 {
@@ -14,6 +17,7 @@ namespace DoctorWho.Db
         public DbSet<Companion> Companions { get; set; }
         public DbSet<Episode> Episodes { get; set; }
         public DbSet<FrequerntCompinaion> FrequerntCompinaions { get; set; }
+        public DbSet<FrequentEnemy> FrequentEnemies { get; set; }
 
         // Configuring
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -70,6 +74,6 @@ namespace DoctorWho.Db
             );
 
         }
-
+        
     }
 }

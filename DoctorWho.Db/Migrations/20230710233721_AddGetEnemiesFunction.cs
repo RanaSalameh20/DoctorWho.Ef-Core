@@ -4,14 +4,13 @@
 
 namespace DoctorWho.Db.Migrations
 {
-    /// <inheritdoc />
-    public partial class AddFnEnemiesFunction : Migration
+    
+    public partial class AddGetEnemiesFunction : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(
-            @"CREATE FUNCTION getEnemies (@EpisodeId INT)
+            @"CREATE FUNCTION GetEnemies (@EpisodeId INT)
             RETURNS VARCHAR(255)
             AS
             BEGIN
@@ -20,7 +19,7 @@ namespace DoctorWho.Db.Migrations
             SELECT @EnemiesList = @EnemiesList + e.EnemyName + ', '
             FROM Enemies e
             JOIN EnemyEpisode ee ON e.EnemyId = ee.EnemiesEnemyId
-            WHERE ee.EnemiesEnemyId = @EpisodeId;
+            WHERE ee.EpisodesEpisodeId = @EpisodeId;
 
             RETURN @EnemiesList;
             END");
@@ -31,7 +30,8 @@ namespace DoctorWho.Db.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(
-            @"DROP FUNCTION getEnemies");
+            @"DROP FUNCTION GetEnemies");
         }
+
     }
 }

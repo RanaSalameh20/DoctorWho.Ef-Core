@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoctorWho.Db.Migrations
 {
     [DbContext(typeof(DoctorWhoCoreDbContext))]
-    [Migration("20230710092152_AddFnEnemiesFunction")]
-    partial class AddFnEnemiesFunction
+    [Migration("20230711002151_AddEpisodesView")]
+    partial class AddEpisodesView
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -377,6 +377,31 @@ namespace DoctorWho.Db.Migrations
                             SeriesNumber = 7,
                             Title = "TestNullDoctor"
                         });
+                });
+
+            modelBuilder.Entity("DoctorWho.Db.FrequerntCompinaion", b =>
+                {
+                    b.Property<string>("CompanionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Frequency")
+                        .HasColumnType("int")
+                        .HasColumnName("CompanionAppearances");
+
+                    b.ToTable("FrequerntCompinaions");
+                });
+
+            modelBuilder.Entity("DoctorWho.Db.ProceduresModels.FrequentEnemy", b =>
+                {
+                    b.Property<int>("EnemyAppearances")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EnemyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("FrequentEnemies");
                 });
 
             modelBuilder.Entity("EnemyEpisode", b =>

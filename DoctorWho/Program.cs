@@ -1,7 +1,13 @@
 ﻿using DoctorWho.Db;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Dapper;
+using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using DoctorWho.Db.ProceduresModels;
+using DoctorWho.Db.ViewsModels;
 
 var _context =  new DoctorWhoCoreDbContext();
 
@@ -311,3 +317,90 @@ void GetCompanion(int companionId)
     }
 
 }
+
+void GetMostFrequentCompanions()
+{
+    var companionsWithFrequency = _context.FrequerntCompinaions
+        .FromSqlRaw("EXEC spMostFrequentlyCompanion")
+        .ToList();
+
+    string result = string.Join(", ", companionsWithFrequency.Select(c => $"{c.CompanionName}: {c.Frequency}"));
+    Console.WriteLine(result);
+
+}
+
+string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=DoctorWhoCore;Trusted_Connection=True;";
+void GetMostFrequentEnemies(){
+   
+    using (IDbConnection connection = new SqlConnection(connectionString))
+    {
+        connection.Open();
+        var enemies = connection.Query<FrequentEnemy>("spMostFrequentlyEnemies"
+            , commandType: CommandType.StoredProcedure).ToList();
+
+        string result = string.Join(", ", enemies.Select(e => $"{e.EnemyName}: {e.EnemyAppearances}"));
+        Console.WriteLine(result);
+
+    }
+}
+void GetEnemiesList(int episodeId)
+{
+    using (var connection = new SqlConnection(connectionString))
+    {
+        connection.Open();
+
+        var parameters = new DynamicParameters();
+        parameters.Add("@EpisodeId", episodeId);
+
+        var result = connection.QueryFirstOrDefault<string>
+            ("SELECT dbo.GetEnemies(@EpisodeId)", 
+            parameters, commandType: CommandType.Text);
+        Console.WriteLine(result);
+    }
+}
+void GetCompanionsList(int episodeId)
+{
+    using (var connection = new SqlConnection(connectionString))
+    {
+        connection.Open();
+
+        var parameters = new DynamicParameters();
+        parameters.Add("@EpisodeId", episodeId);
+
+        var result = connection.QueryFirstOrDefault<string>
+            ("SELECT dbo.GetCompanions(@EpisodeId)",
+            parameters, commandType: CommandType.Text);
+        Console.WriteLine(result);
+    }
+}
+ 
+ViewEpisodes();
+
+void ViewEpisodes()
+{
+    using (var connection = new SqlConnection(connectionString))
+    {
+        connection.Open();
+
+        var episodes = connection.Query<ViewEpisode>("SELECT * FROM ViewEpisodes");
+
+        foreach (var episode in episodes)
+        {
+            Console.WriteLine($"Episode ID: {episode.EpisodeId}");
+            Console.WriteLine($"Series Number: {episode.SeriesNumber}");
+            Console.WriteLine($"Episode Number: {episode.EpisodeNumber}");
+            Console.WriteLine($"Episode Type: {episode.EpisodeType}");
+            Console.WriteLine($"Title: {episode.Title}");
+            Console.WriteLine($"Episode Date: {episode.EpisodeDate}");
+            Console.WriteLine($"Author ID: {episode.AuthorId}");
+            Console.WriteLine($"Doctor ID: {episode.DoctorId}");
+            Console.WriteLine($"Author: {episode.Author}");
+            Console.WriteLine($"Doctor: {episode.Doctor}");
+            Console.WriteLine($"Companions: {episode.Companions}");
+            Console.WriteLine($"Enemies: {episode.Enemies}");
+           
+        }
+
+    }
+}
+
